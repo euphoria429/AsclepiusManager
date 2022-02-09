@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-//@MapperScan({"com.hcx.asclepiusmanager.**.mapper","com.hcx.asclepiusmanager.**.repositories","com.hcx.asclepiusmanager.**.repository"})
+@SpringBootApplication
+@MapperScan({"com.hcx.asclepiusmanager.**.mapper","com.hcx.asclepiusmanager.**.repositories","com.hcx.asclepiusmanager.**.repository"})
 public class AsclepiusManagerApplication {
 
     public static void main(String[] args) {

@@ -3,17 +3,15 @@ package com.hcx.asclepiusmanager.sysmgr.auth.domain;
 import lombok.Data;
 
 /**
- * @ClassName sys_admin_user
+ * @ClassName SysUserLoginDTO
  * @Description TODO
  * @Author hcx
- * @Date 2022/1/25 17:26
+ * @Date 2022/2/9 15:03
  * @Version 1.0
  **/
 @Data
-public class SysAdminUser {
-    private Long id;
-    private String userName;
-    private String nickName;
+public class SysUserLoginDTO {
+    private String username;
     private String password;
-
+    private Integer rememberMe;
 }

@@ -16,7 +16,7 @@ import java.util.Collections;
  * @Version 1.0
  **/
 public class JwtUser implements UserDetails {
-    private Long id;
+    private Integer id;
     private String username;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
@@ -42,7 +42,7 @@ public class JwtUser implements UserDetails {
         return password;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

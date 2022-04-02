@@ -21,8 +21,11 @@ import lombok.NoArgsConstructor;
 @TableName("sys_user")
 public class SysUser extends BaseDateAuditPojo {
 
-    @TableId(type = IdType.ASSIGN_ID)
-    private Long id;
+    /**
+     * id自增
+     */
+    @TableId(type = IdType.AUTO)
+    private Integer id;
 
     private String username;
 

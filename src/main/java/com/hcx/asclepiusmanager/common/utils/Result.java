@@ -28,6 +28,8 @@ public class Result<T> implements Serializable {
 
     private String msg;
 
+    private Integer count;
+
     private T data;
 
     /**
@@ -81,4 +83,10 @@ public class Result<T> implements Serializable {
         this.data = data;
     }
 
+    public Result(Integer code, String msg, Integer count, T data) {
+        this.code = code;
+        this.msg = msg;
+        this.count = count;
+        this.data = data;
+    }
 }

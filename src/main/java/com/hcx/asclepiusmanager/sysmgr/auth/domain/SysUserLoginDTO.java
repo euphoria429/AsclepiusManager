@@ -14,4 +14,6 @@ public class SysUserLoginDTO {
     private String username;
     private String password;
     private Integer rememberMe;
+    private String keyCode;
+    private String captcha;
 }

@@ -14,4 +14,6 @@ public interface SysUserService {
     SysUser insert(SysUser sysUser);
 
     SysUser findByUsername(String username);
+
+    String getCurrentOperator();
 }

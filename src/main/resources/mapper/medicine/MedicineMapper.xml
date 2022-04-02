@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hcx.asclepiusmanager.medicine.mapper.MedicineMapper">
+    <select id="findMedicineWithPages" resultType="Medicine">
+        select * from medicine
+        <where>
+            <if test="medicineRequest.id !=null">
+                and id =#{medicineRequest.id}
+            </if>
+            <if test="medicineRequest.status !=null">
+                and status =#{medicineRequest.status}
+            </if>
+            <if test="medicineRequest.medicineName != null and medicineRequest.medicineName !=''">
+                and ( medicine_name like CONCAT('%', #{medicineRequest.medicineName}, '%') )
+            </if>
+            <if test="medicineRequest.brandId !=null">
+                and brand_id =#{medicineRequest.brandId}
+            </if>
+            <if test="medicineRequest.medicineTypeId !=null">
+                and medicine_type_id =#{medicineRequest.medicineTypeId}
+            </if>
+        </where>
+        order by id asc
+    </select>
+
+</mapper>

@@ -15,4 +15,6 @@ public interface AddressService {
     Integer updateAddress(Address address);
 
     List<Address> findAllAddress();
+
+    Integer deleteAddress(Integer addressId);
 }

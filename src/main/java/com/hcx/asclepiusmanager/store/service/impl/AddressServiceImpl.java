@@ -45,4 +45,12 @@ public Integer saveAddress(Address address) {
         wrapper.eq("user_open_id", openId);
         return addressMapper.selectList(wrapper);
     }
+
+    @Override
+    public Integer deleteAddress(Integer addressId) {
+        if(addressId==null||addressMapper.selectById(addressId)==null){
+            return 0;
+        }
+        return addressMapper.deleteById(addressId);
+    }
 }

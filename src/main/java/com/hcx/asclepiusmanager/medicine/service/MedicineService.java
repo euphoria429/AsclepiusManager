@@ -1,10 +1,7 @@
 package com.hcx.asclepiusmanager.medicine.service;
 
 
-import com.hcx.asclepiusmanager.medicine.domain.Medicine;
-import com.hcx.asclepiusmanager.medicine.domain.MedicineDTO;
-import com.hcx.asclepiusmanager.medicine.domain.MedicineRequest;
-import com.hcx.asclepiusmanager.medicine.domain.MedicineVO;
+import com.hcx.asclepiusmanager.medicine.domain.*;
 
 import java.util.List;
 
@@ -25,4 +22,6 @@ public interface MedicineService {
     Integer changeSoldStatus(Medicine medicine);
 
     Integer addStock(Medicine medicine);
+
+    List<MedicineNumberVO> findMedicineWithNumber(MedicineRequest medicineRequest);
 }

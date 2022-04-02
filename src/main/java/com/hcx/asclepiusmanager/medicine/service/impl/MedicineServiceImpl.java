@@ -163,4 +163,19 @@ public class MedicineServiceImpl implements MedicineService {
         }
         return 1;
     }
+
+    @Override
+    public List<MedicineNumberVO> findMedicineWithNumber(MedicineRequest medicineRequest) {
+        List<Medicine> medicines=medicineMapper.findMedicineWithPages(medicineRequest);
+        String mos = JSON.toJSONString(medicines);
+        List<MedicineNumberVO> medicineVOS = JSON.parseArray(mos, MedicineNumberVO.class);
+        //关联品牌名 药品类别名 图片 销量
+        for(MedicineNumberVO medicineVO:medicineVOS){
+            medicineVO.setBrandName(brandService.findBrandById(medicineVO.getBrandId()).getBrandName());
+            medicineVO.setMedicineTypeName(medicineTypeService.findMedicineTypeById(medicineVO.getMedicineTypeId()).getMedicineTypeName());
+            medicineVO.setMedicineImgs(medicineImgService.getMedicineImgsByImgIds(medicineImgService.findImgIdsByMedicineId(medicineVO.getId())));
+            medicineVO.setNumber(medicineOperatedService.findMedicineMonthlyNumber(medicineVO.getId()));
+        }
+        return medicineVOS;
+    }
 }

@@ -2,10 +2,7 @@ package com.hcx.asclepiusmanager.medicine.controller;
 
 import com.hcx.asclepiusmanager.common.enums.ResultEnum;
 import com.hcx.asclepiusmanager.common.utils.Result;
-import com.hcx.asclepiusmanager.medicine.domain.Medicine;
-import com.hcx.asclepiusmanager.medicine.domain.MedicineDTO;
-import com.hcx.asclepiusmanager.medicine.domain.MedicineRequest;
-import com.hcx.asclepiusmanager.medicine.domain.MedicineVO;
+import com.hcx.asclepiusmanager.medicine.domain.*;
 import com.hcx.asclepiusmanager.medicine.service.MedicineService;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +20,7 @@ public class MedicineController {
     @Resource
     MedicineService medicineService;
 
-    /**
+    /** 后台查询药品接口
      * @param medicineRequest
      * @return
      */
@@ -34,6 +31,20 @@ public class MedicineController {
         result.setMsg(ResultEnum.SUCCESS.getMsg());
         List<MedicineVO> medicines=medicineService.findMedicineWithPages(medicineRequest);
         result.setCount(medicines.size());
+        result.setData(medicines);
+        return result;
+    }
+
+    /** 小程序查询药品接口，多一个返回参数销量（number）
+     * @param medicineRequest
+     * @return
+     */
+    @GetMapping("/findMedicineWithNumber")
+    public Result findMedicineWithNumber(MedicineRequest medicineRequest){
+        Result result=new Result();
+        result.setCode(ResultEnum.SUCCESS.getCode());
+        result.setMsg(ResultEnum.SUCCESS.getMsg());
+        List<MedicineNumberVO> medicines=medicineService.findMedicineWithNumber(medicineRequest);
         result.setData(medicines);
         return result;
     }

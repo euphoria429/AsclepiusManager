@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hcx.asclepiusmanager.medicine.mapper.MedicineOperatedMapper">
+    <select id="findMedicineMonthlyNumber" resultType="int">
+        select IFNULL(SUM(number),0) as number from medicine_operated
+        <where>
+                medicine_id =#{medicineId}
+
+                and operation_code =#{operationCode}
+
+                AND DATE_SUB(CURDATE(), INTERVAL 1 MONTH) <![CDATA[<= ]]> date(created_at)
+        </where>
+    </select>
+
+</mapper>

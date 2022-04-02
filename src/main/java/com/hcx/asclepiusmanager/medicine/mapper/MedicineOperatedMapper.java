@@ -3,6 +3,7 @@ package com.hcx.asclepiusmanager.medicine.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hcx.asclepiusmanager.medicine.domain.MedicineOperated;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author huangcaixia
@@ -12,4 +13,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MedicineOperatedMapper extends BaseMapper<MedicineOperated> {
 
+    Integer findMedicineMonthlyNumber(@Param("medicineId") Integer id, @Param("operationCode") Integer code);
 }

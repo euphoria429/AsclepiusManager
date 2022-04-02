@@ -9,4 +9,6 @@ import com.hcx.asclepiusmanager.medicine.domain.MedicineOperated;
  */
 public interface MedicineOperatedService {
     Integer insert(MedicineOperated medicineOperated);
+
+    Integer findMedicineMonthlyNumber(Integer id);
 }

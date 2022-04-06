@@ -121,7 +121,7 @@ public class SysWechatServiceImpl implements SysWechatService {
      *
      * @return
      */
-    private String getCurrentOperator() {
+    public String getCurrentOperator() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication.getPrincipal().toString();
 

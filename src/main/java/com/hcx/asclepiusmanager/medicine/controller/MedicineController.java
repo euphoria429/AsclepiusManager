@@ -20,7 +20,7 @@ public class MedicineController {
     @Resource
     MedicineService medicineService;
 
-    /** 后台查询药品接口
+    /** 后台查询药品接口，为了适应前端layui，返回带count
      * @param medicineRequest
      * @return
      */
@@ -35,7 +35,9 @@ public class MedicineController {
         return result;
     }
 
-    /** 小程序查询药品接口，多一个返回参数销量（number）
+    /**
+     * TODO 测试
+     * 小程序查询药品接口，多一个返回参数销量（number）
      * @param medicineRequest
      * @return
      */

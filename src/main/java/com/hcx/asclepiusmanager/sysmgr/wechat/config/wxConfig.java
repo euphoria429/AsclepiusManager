@@ -2,7 +2,6 @@ package com.hcx.asclepiusmanager.sysmgr.wechat.config;
 
 /**
  * @author huangcaixia
- * @Description TODO
  * @date 2022/3/26 20:02
  */
 public class wxConfig {

@@ -26,7 +26,6 @@ import static com.hcx.asclepiusmanager.sysmgr.wechat.config.wxConfig.APPLET_SECR
 
 /**
  * @author huangcaixia
- * @Description TODO
  * @date 2022/3/26 19:55
  */
 @Service

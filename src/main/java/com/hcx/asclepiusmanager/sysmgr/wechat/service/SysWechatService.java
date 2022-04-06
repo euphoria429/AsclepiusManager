@@ -6,7 +6,6 @@ import java.util.Map;
 
 /**
  * @author huangcaixia
- * @Description TODO
  * @date 2022/3/26 19:54
  */
 public interface SysWechatService {

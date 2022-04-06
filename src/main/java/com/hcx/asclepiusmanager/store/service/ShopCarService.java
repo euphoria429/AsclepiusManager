@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * @author huangcaixia
- * @Description TODO
  * @date 2022/4/2 17:43
  */
 public interface ShopCarService {

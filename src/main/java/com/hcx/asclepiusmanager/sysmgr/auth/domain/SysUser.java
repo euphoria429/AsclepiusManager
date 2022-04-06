@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 /**
  * @ClassName SysUser
- * @Description TODO
  * @Author hcx
  * @Date 2022/1/25 17:26
  * @Version 1.0

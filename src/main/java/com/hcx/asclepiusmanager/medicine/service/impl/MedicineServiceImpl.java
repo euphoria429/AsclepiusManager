@@ -17,7 +17,6 @@ import static com.hcx.asclepiusmanager.common.enums.SoldStatusEnum.ON_SOLD;
 
 /**
  * @author huangcaixia
- * @Description TODO
  * @date 2022/3/26 12:02
  */
 @Service

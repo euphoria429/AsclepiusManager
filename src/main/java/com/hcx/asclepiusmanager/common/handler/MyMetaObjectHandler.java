@@ -17,7 +17,6 @@ import static com.hcx.asclepiusmanager.common.constant.CustConstant.*;
 
 /**
  * @ClassName MyMetaObjectHandler
- * @Description TODO
  * @Author hcx
  * @Date 2022/2/9 16:05
  * @Version 1.0

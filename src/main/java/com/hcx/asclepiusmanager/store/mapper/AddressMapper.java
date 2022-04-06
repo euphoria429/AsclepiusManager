@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @author huangcaixia
- * @Description TODO
  * @date 2022/3/28 21:34
  */
 @Mapper

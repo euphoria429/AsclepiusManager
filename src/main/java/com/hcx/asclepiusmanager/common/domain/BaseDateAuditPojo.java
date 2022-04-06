@@ -11,7 +11,6 @@ import java.util.Date;
 
 /**
  * @ClassName BaseDateAuditPojo
- * @Description TODO
  * @Author hcx
  * @Date 2022/2/9 14:44
  * @Version 1.0

@@ -4,7 +4,6 @@ import lombok.Data;
 
 /**
  * @ClassName SysUserLoginDTO
- * @Description TODO
  * @Author hcx
  * @Date 2022/2/9 15:03
  * @Version 1.0

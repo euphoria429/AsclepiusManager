@@ -2,7 +2,6 @@ package com.hcx.asclepiusmanager.common.constant;
 
 /**
  * @ClassName CustConstant
- * @Description TODO
  * @Author hcx
  * @Date 2022/2/9 16:06
  * @Version 1.0

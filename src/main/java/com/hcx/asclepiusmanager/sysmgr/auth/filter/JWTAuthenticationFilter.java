@@ -22,7 +22,6 @@ import java.util.Collection;
 
 /**
  * @ClassName JWTAuthenticationFilter
- * @Description TODO
  * @Author hcx
  * @Date 2022/2/9 15:26
  * @Version 1.0

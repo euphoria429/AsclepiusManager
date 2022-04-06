@@ -4,7 +4,6 @@ import java.util.Map;
 
 /**
  * @author huangcaixia
- * @Description TODO
  * @date 2022/3/30 11:04
  */
 public interface SysMenuService {

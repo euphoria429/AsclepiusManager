@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Select;
 
 /**
  * @author huangcaixia
- * @Description TODO
  * @date 2022/3/26 19:53
  */
 @Mapper

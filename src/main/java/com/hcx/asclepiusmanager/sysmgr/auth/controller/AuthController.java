@@ -35,7 +35,6 @@ import static com.hcx.asclepiusmanager.common.utils.JwtTokenUtils.TOKEN_PREFIX;
 
 /**
  * @ClassName AuthController
- * @Description TODO
  * @Author hcx
  * @Date 2022/2/9 15:07
  * @Version 1.0

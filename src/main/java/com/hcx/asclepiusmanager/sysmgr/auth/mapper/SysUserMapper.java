@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Select;
 
 /**
  * @ClassName SysUserMapper
- * @Description TODO
  * @Author hcx
  * @Date 2022/2/9 15:10
  * @Version 1.0

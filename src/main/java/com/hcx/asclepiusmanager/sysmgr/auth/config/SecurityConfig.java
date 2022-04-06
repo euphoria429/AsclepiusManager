@@ -21,7 +21,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 /**
  * @ClassName SecurityConfig
- * @Description TODO
  * @Author hcx
  * @Date 2022/2/9 15:05
  * @Version 1.0

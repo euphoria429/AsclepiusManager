@@ -10,7 +10,6 @@ import java.util.Collections;
 
 /**
  * @ClassName JwtUser
- * @Description TODO
  * @Author hcx
  * @Date 2022/2/9 14:52
  * @Version 1.0

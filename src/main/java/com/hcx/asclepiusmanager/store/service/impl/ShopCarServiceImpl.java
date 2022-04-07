@@ -62,10 +62,10 @@ public class ShopCarServiceImpl implements ShopCarService {
         wrapper.eq("user_id", userId);
         wrapper.eq("medicine_id", shopCarDTO.getMedicineId());
         wrapper.eq("status", 1);
-        ShopCar shopCar = shopCarMapper.selectOne(wrapper);
-
+        ShopCar sc = shopCarMapper.selectOne(wrapper);
+        ShopCar shopCar=new ShopCar();
         //不同状态不同操作
-        if (shopCar == null) {
+        if (sc == null) {
             //无的情况，插入新纪录
             shopCar.setMedicineId(shopCarDTO.getMedicineId());
             shopCar.setUserId(userId);
@@ -101,10 +101,10 @@ public class ShopCarServiceImpl implements ShopCarService {
         QueryWrapper<ShopCar> wrapper = new QueryWrapper<>();
         wrapper.eq("user_id", userId);
         wrapper.eq("status", 1);
-        ShopCar shopCar = shopCarMapper.selectOne(wrapper);
+        List<ShopCar> shopCars=shopCarMapper.selectList(wrapper);
 
         //复制到VO
-        String mos = JSON.toJSONString(shopCar);
+        String mos = JSON.toJSONString(shopCars);
         List<ShopCarVO> shopCarVOS = JSON.parseArray(mos, ShopCarVO.class);
         //构建VO 关联品牌名 药品名 单位 单价
         MedicineRequest medicineRequest = new MedicineRequest();
@@ -115,6 +115,7 @@ public class ShopCarServiceImpl implements ShopCarService {
             shopCarVO.setMedicineName(medicineVO.getMedicineName());
             shopCarVO.setMedicineUnit(medicineVO.getMedicineUnit());
             shopCarVO.setMedicineUnitPrice(medicineVO.getMedicineUnitPrice());
+            shopCarVO.setMedicineImgs(medicineVO.getMedicineImgs());
         }
         return shopCarVOS;
     }
@@ -133,18 +134,9 @@ public class ShopCarServiceImpl implements ShopCarService {
         ShopCar shopCar = shopCarMapper.selectById(shopCarUpdateDTO.getShopCarId());
         if (shopCar == null) {
             return 0;
-        } else if (shopCarUpdateDTO.getMedicineNumber() == 1) {
-            shopCar.setMedicineNumber(shopCar.getMedicineNumber() + 1);
-            return shopCarMapper.updateById(shopCar);
-        } else if (shopCarUpdateDTO.getMedicineNumber() == -1) {
-            if (shopCar.getMedicineNumber() == 1) {
-                return 1;
-            } else {
-                shopCar.setMedicineNumber(shopCar.getMedicineNumber() - 1);
-                return shopCarMapper.updateById(shopCar);
-            }
         }
-        return 1;
+        shopCar.setMedicineNumber(shopCarUpdateDTO.getMedicineNumber());
+        return shopCarMapper.updateById(shopCar);
     }
 
     /**

@@ -20,7 +20,6 @@ public class ShopCarController {
     ShopCarService shopCarService;
 
     /**
-     * TODO 测试
      * 新增购物车，新增的数量默认为1
      * @param shopCarDTO
      * @return
@@ -35,7 +34,6 @@ public class ShopCarController {
     }
 
     /**
-     * TODO 测试
      * 查询当前用户的购物车列表
      * @return
      */
@@ -49,7 +47,6 @@ public class ShopCarController {
     }
 
     /**
-     * TODO 测试
      * 修改购物车药品数量，只能以1为单位修改
      * @param shopCarUpdateDTO
      * @return
@@ -65,7 +62,6 @@ public class ShopCarController {
 
 
     /**
-     * TODO 测试
      * 删除购物车记录
      * @param shopCarId
      * @return

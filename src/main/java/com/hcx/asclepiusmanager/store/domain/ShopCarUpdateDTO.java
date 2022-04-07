@@ -13,7 +13,7 @@ public class ShopCarUpdateDTO {
      */
     private Integer shopCarId;
     /**
-     * 修改数，值为1或-1
+     * 修改的数值
      */
     private Integer medicineNumber;
 }

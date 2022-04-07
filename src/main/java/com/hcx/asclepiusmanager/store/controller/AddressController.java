@@ -49,7 +49,7 @@ public class AddressController {
 
 
     @PostMapping("/delete")
-    public Result delete(Integer addressId){
+    public Result delete(@RequestParam("addressId") Integer addressId){
         Integer code = addressService.deleteAddress(addressId);
         if (0 != code) {
             return new Result(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMsg(), "删除地址成功");

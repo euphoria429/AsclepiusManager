@@ -23,4 +23,10 @@ public interface MedicineService {
     Integer addStock(Medicine medicine);
 
     List<MedicineNumberVO> findMedicineWithNumber(MedicineRequest medicineRequest);
+
+    Medicine findMedicineById(Integer medicineId);
+
+    Integer updateSoldStore(Medicine medicine);
+
+    String findBrandNameByMedicineId(Integer medicineId);
 }

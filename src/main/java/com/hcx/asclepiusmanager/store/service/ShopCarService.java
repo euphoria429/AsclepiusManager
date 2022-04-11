@@ -19,4 +19,8 @@ public interface ShopCarService {
     Integer updateShopCar(ShopCarUpdateDTO shopCarUpdateDTO);
 
     Integer deleteShopCar(Integer shopCarId);
+
+    ShopCar getShopCarById(Integer id);
+
+    Integer updateShopCarStatus(ShopCar shopCar);
 }

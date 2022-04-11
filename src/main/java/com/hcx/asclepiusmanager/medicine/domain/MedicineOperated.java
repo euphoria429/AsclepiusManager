@@ -41,6 +41,6 @@ public class MedicineOperated extends BaseDateAuditPojo {
     /**
      * 订单id
      */
-    private Long orderId;
+    private Integer orderId;
 
 }

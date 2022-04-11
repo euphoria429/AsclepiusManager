@@ -35,8 +35,8 @@ public class MedicineController {
     }
 
     /**
-     * TODO 测试
-     * 小程序查询药品接口，多一个返回参数销量（number）
+     * TODO 添加了商品状态 待测试
+     * 小程序查询药品接口，多一个返回参数销量（number）,且商品状态为在售
      * @param medicineRequest
      * @return
      */

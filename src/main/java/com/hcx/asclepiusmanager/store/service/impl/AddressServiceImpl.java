@@ -52,4 +52,9 @@ public Integer saveAddress(Address address) {
         }
         return addressMapper.deleteById(addressId);
     }
+
+    @Override
+    public Address findAddressById(Integer addressId) {
+        return addressMapper.selectById(addressId);
+    }
 }

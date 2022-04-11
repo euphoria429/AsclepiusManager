@@ -1,9 +1,11 @@
 package com.hcx.asclepiusmanager.medicine.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.hcx.asclepiusmanager.medicine.domain.Brand;
 import com.hcx.asclepiusmanager.medicine.mapper.BrandMapper;
 import com.hcx.asclepiusmanager.medicine.service.BrandService;
+import com.hcx.asclepiusmanager.medicine.service.MedicineService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

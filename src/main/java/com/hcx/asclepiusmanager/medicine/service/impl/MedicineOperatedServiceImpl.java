@@ -30,6 +30,6 @@ public class MedicineOperatedServiceImpl implements MedicineOperatedService {
      */
     @Override
     public Integer findMedicineMonthlyNumber(Integer id) {
-        return medicineOperatedMapper.findMedicineMonthlyNumber(id, OperationEnum.SOLD.getCode());
+        return Math.abs(medicineOperatedMapper.findMedicineMonthlyNumber(id, OperationEnum.SOLD.getCode()));
     }
 }

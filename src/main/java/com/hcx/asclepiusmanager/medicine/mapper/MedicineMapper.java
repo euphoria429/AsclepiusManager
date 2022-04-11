@@ -16,4 +16,6 @@ import java.util.List;
 public interface MedicineMapper extends BaseMapper<Medicine> {
 
     List<Medicine> findMedicineWithPages(@Param("medicineRequest") MedicineRequest medicineRequest);
+
+    List<Medicine> findMedicineWithNumber(@Param("medicineRequest") MedicineRequest medicineRequest);
 }

@@ -76,7 +76,8 @@ public class ShopCarServiceImpl implements ShopCarService {
             return shopCarMapper.insert(shopCar);
         } else {
             //有的情况,数量自增
-            shopCar.setMedicineNumber(shopCar.getMedicineNumber() + 1);
+            shopCar.setId(sc.getId());
+            shopCar.setMedicineNumber(sc.getMedicineNumber()+1);
             return shopCarMapper.updateById(shopCar);
         }
 
@@ -155,6 +156,16 @@ public class ShopCarServiceImpl implements ShopCarService {
         shopCar.setStatus(-1);
         return shopCarMapper.updateById(shopCar);
 
+    }
+
+    @Override
+    public ShopCar getShopCarById(Integer id) {
+        return shopCarMapper.selectById(id);
+    }
+
+    @Override
+    public Integer updateShopCarStatus(ShopCar shopCar) {
+        return shopCarMapper.updateById(shopCar);
     }
 }
 

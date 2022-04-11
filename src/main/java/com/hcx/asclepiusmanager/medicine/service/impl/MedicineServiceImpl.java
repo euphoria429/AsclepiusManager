@@ -165,7 +165,7 @@ public class MedicineServiceImpl implements MedicineService {
 
     @Override
     public List<MedicineNumberVO> findMedicineWithNumber(MedicineRequest medicineRequest) {
-        List<Medicine> medicines=medicineMapper.findMedicineWithPages(medicineRequest);
+        List<Medicine> medicines=medicineMapper.findMedicineWithNumber(medicineRequest);
         String mos = JSON.toJSONString(medicines);
         List<MedicineNumberVO> medicineVOS = JSON.parseArray(mos, MedicineNumberVO.class);
         //关联品牌名 药品类别名 图片 销量
@@ -176,5 +176,21 @@ public class MedicineServiceImpl implements MedicineService {
             medicineVO.setNumber(medicineOperatedService.findMedicineMonthlyNumber(medicineVO.getId()));
         }
         return medicineVOS;
+    }
+
+    @Override
+    public Medicine findMedicineById(Integer medicineId) {
+        return medicineMapper.selectById(medicineId);
+    }
+
+    @Override
+    public Integer updateSoldStore(Medicine medicine) {
+        return medicineMapper.updateById(medicine);
+    }
+
+    @Override
+    public String findBrandNameByMedicineId(Integer medicineId) {
+        Medicine medicine=medicineMapper.selectById(medicineId);
+        return brandService.findBrandById(medicine.getBrandId()).getBrandName();
     }
 }

@@ -50,6 +50,27 @@ public class MedicineController {
         return result;
     }
 
+    /**
+     * 小程序根据药品id查询药品接口
+     * @param medicineId
+     * @return
+     */
+    @GetMapping("/findMedicineById")
+    public Result findMedicineById(@RequestParam("medicineId")Integer medicineId){
+        Result result=new Result();
+        result.setCode(ResultEnum.SUCCESS.getCode());
+        result.setMsg(ResultEnum.SUCCESS.getMsg());
+        if(medicineId==null){
+            result.setData(null);
+            return result;
+        }
+        MedicineRequest medicineRequest=new MedicineRequest();
+        medicineRequest.setId(medicineId);
+        List<MedicineNumberVO> medicines=medicineService.findMedicineWithNumber(medicineRequest);
+        result.setData(medicines.get(0));
+        return result;
+    }
+
     @PostMapping("/save")
     public Result saveMedicine(MedicineDTO medicineDTO){
         Integer code = medicineService.saveMedicine(medicineDTO);

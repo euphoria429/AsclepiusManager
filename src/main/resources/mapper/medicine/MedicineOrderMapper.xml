@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hcx.asclepiusmanager.store.mapper.MedicineOrderMapper">
+    <select id="findOrderByQuery" resultType="MedicineOrder">
+        select * from medicine_order
+        <where>
+            <if test="medicineOrderQuery.orderId !=null">
+                and id =#{medicineOrderQuery.orderId}
+            </if>
+            <if test="medicineOrderQuery.status !=null">
+                and status =#{medicineOrderQuery.status}
+            </if>
+            <if test="medicineOrderQuery.userId !=null">
+                and user_id =#{medicineOrderQuery.userId}
+            </if>
+        </where>
+        order by id asc
+    </select>
+
+</mapper>

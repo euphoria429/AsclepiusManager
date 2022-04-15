@@ -221,4 +221,10 @@ public class MedicineOrderServiceImpl implements MedicineOrderService {
         return constructOrder(medicineOrders).get(0);
     }
 
+    @Override
+    public List<MedicineOrderVO> findOrderByQuery(MedicineOrderQuery medicineOrderQuery) {
+        List<MedicineOrder> medicineOrders=medicineOrderMapper.findOrderByQuery(medicineOrderQuery);
+        return constructOrder(medicineOrders);
+    }
+
 }

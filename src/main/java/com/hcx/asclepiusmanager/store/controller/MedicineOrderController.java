@@ -2,6 +2,7 @@ package com.hcx.asclepiusmanager.store.controller;
 
 import com.hcx.asclepiusmanager.common.enums.ResultEnum;
 import com.hcx.asclepiusmanager.common.utils.Result;
+import com.hcx.asclepiusmanager.store.domain.MedicineOrder;
 import com.hcx.asclepiusmanager.store.domain.MedicineOrderDTO;
 import com.hcx.asclepiusmanager.store.domain.MedicineOrderQuery;
 import com.hcx.asclepiusmanager.store.domain.MedicineOrderVO;
@@ -86,5 +87,22 @@ public class MedicineOrderController {
             result.setCount(medicineOrderVOS.size());
         }
         return result;
+    }
+
+    /**
+     * 网页端：订单发货
+     * @param medicineOrder
+     * @return
+     */
+    @PostMapping("/deliveryOrder")
+    public Result deliveryOrder(MedicineOrder medicineOrder) {
+        Integer code = medicineOrderService.deliveryOrder(medicineOrder);
+        if (0 != code) {
+            return new Result(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getMsg(), "订单发货成功");
+        }
+        if (code == -1) {
+            return new Result(ResultEnum.ERROR.getCode(), ResultEnum.ERROR.getMsg(), "发货失败");
+        }
+        return new Result(ResultEnum.ERROR.getCode(), ResultEnum.ERROR.getMsg(), "发货失败");
     }
 }

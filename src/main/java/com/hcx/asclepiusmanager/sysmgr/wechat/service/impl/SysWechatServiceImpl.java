@@ -115,6 +115,12 @@ public class SysWechatServiceImpl implements SysWechatService {
         return user;
     }
 
+    @Override
+    public int countUser() {
+        QueryWrapper<SysWechat> wrapper=new QueryWrapper<>();
+        return sysWechatMapper.selectCount(wrapper);
+    }
+
     /**
      * 获取当前用户openid
      *

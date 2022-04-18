@@ -1,5 +1,6 @@
 package com.hcx.asclepiusmanager.store.service;
 
+import com.hcx.asclepiusmanager.store.domain.MedicineOrder;
 import com.hcx.asclepiusmanager.store.domain.MedicineOrderDTO;
 import com.hcx.asclepiusmanager.store.domain.MedicineOrderQuery;
 import com.hcx.asclepiusmanager.store.domain.MedicineOrderVO;
@@ -19,4 +20,8 @@ public interface MedicineOrderService {
     MedicineOrderVO getOrderInfo(Integer orderId);
 
     List<MedicineOrderVO> findOrderByQuery(MedicineOrderQuery medicineOrderQuery);
+
+    Integer deliveryOrder(MedicineOrder medicineOrder);
+
+    int countOrder();
 }

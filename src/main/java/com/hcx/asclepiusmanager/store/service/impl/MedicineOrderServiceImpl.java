@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -173,8 +174,9 @@ public class MedicineOrderServiceImpl implements MedicineOrderService {
         List<MedicineOrderVO> medicineOrderVOS=new ArrayList<>();
         for(MedicineOrder medicineOrder:medicineOrders){
             MedicineOrderVO medicineOrderVO=new MedicineOrderVO();
-            //订单id、总金额、状态（String）、创建时间、发货时间、收货时间
+            //订单id、用户id、总金额、状态（String）、创建时间、发货时间、收货时间
             medicineOrderVO.setOrderId(medicineOrder.getId());
+            medicineOrderVO.setUserId(medicineOrder.getUserId());
             medicineOrderVO.setTotalPrice(medicineOrder.getTotalPrice());
             medicineOrderVO.setStatus(OrderEnum.findByCode(medicineOrder.getStatus()).toString());
             medicineOrderVO.setCreatedAt(medicineOrder.getCreatedAt());
@@ -218,6 +220,9 @@ public class MedicineOrderServiceImpl implements MedicineOrderService {
         QueryWrapper<MedicineOrder> wrapper = new QueryWrapper<>();
         wrapper.eq("id", orderId);
         List<MedicineOrder> medicineOrders=medicineOrderMapper.selectList(wrapper);
+        if(medicineOrders==null){
+            return null;
+        }
         return constructOrder(medicineOrders).get(0);
     }
 
@@ -225,6 +230,29 @@ public class MedicineOrderServiceImpl implements MedicineOrderService {
     public List<MedicineOrderVO> findOrderByQuery(MedicineOrderQuery medicineOrderQuery) {
         List<MedicineOrder> medicineOrders=medicineOrderMapper.findOrderByQuery(medicineOrderQuery);
         return constructOrder(medicineOrders);
+    }
+
+    /**
+     * 网页端：订单发货
+     * @param medicineOrder
+     * @return
+     */
+    @Override
+    public Integer deliveryOrder(MedicineOrder medicineOrder) {
+        if(medicineOrder.getStatus()!=2||medicineOrder.getId()==null ){
+            return 0;
+        }
+        if(medicineOrderMapper.selectById(medicineOrder.getId())==null){
+            return 0;
+        }
+        medicineOrder.setDeliveryAt(new Date());
+        return medicineOrderMapper.updateById(medicineOrder);
+    }
+
+    @Override
+    public int countOrder() {
+        QueryWrapper<MedicineOrder> wrapper=new QueryWrapper<>();
+        return medicineOrderMapper.selectCount(wrapper);
     }
 
 }

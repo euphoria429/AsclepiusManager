@@ -1,17 +1,24 @@
 package com.hcx.asclepiusmanager.medicine.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.hcx.asclepiusmanager.common.enums.OperationEnum;
 import com.hcx.asclepiusmanager.medicine.domain.*;
 import com.hcx.asclepiusmanager.medicine.mapper.MedicineMapper;
 import com.hcx.asclepiusmanager.medicine.service.*;
+import com.hcx.asclepiusmanager.store.service.MedicineOrderService;
+import com.hcx.asclepiusmanager.sysmgr.wechat.service.SysWechatService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.hcx.asclepiusmanager.common.enums.SoldStatusEnum.ON_SOLD;
 
@@ -35,6 +42,13 @@ public class MedicineServiceImpl implements MedicineService {
 
     @Resource
     MedicineOperatedService medicineOperatedService;
+
+    @Resource
+    SysWechatService sysWechatService;
+
+    @Lazy
+    @Autowired
+    MedicineOrderService medicineOrderService;
 
     @Override
     public List<MedicineVO> findMedicineWithPages(MedicineRequest medicineRequest) {
@@ -192,5 +206,18 @@ public class MedicineServiceImpl implements MedicineService {
     public String findBrandNameByMedicineId(Integer medicineId) {
         Medicine medicine=medicineMapper.selectById(medicineId);
         return brandService.findBrandById(medicine.getBrandId()).getBrandName();
+    }
+
+    @Override
+    public Map<String, Integer> findCountInfo() {
+        Map<String, Integer> map = new HashMap<>(16);
+        int userNumber=sysWechatService.countUser();
+        QueryWrapper<Medicine> wrapper=new QueryWrapper<>();
+        int medicineNumber=medicineMapper.selectCount(wrapper);
+        int orderNumber=medicineOrderService.countOrder();
+        map.put("userNumber",userNumber);
+        map.put("medicineNumber",medicineNumber);
+        map.put("orderNumber",orderNumber);
+        return map;
     }
 }

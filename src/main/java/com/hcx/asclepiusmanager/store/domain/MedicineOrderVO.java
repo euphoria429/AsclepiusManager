@@ -23,6 +23,11 @@ public class MedicineOrderVO {
      */
     private Integer orderId;
 
+    /**
+     * 用户id
+     */
+    private Integer userId;
+
     private String location;//地址信息-省市区
 
     private String detailAddress;//地址信息-详细地址
@@ -63,5 +68,15 @@ public class MedicineOrderVO {
      * 药品信息列表
      */
     private List<MedicineOrderGoodsVO> medicineOrderGoodsVOS;
+
+    public String getGoodsInfo(){
+        StringBuffer goodsInfo=new StringBuffer();
+        if(medicineOrderGoodsVOS!=null||medicineOrderGoodsVOS.size()!=0){
+            for(MedicineOrderGoodsVO medicineOrderGoodsVO:medicineOrderGoodsVOS){
+                goodsInfo.append("["+medicineOrderGoodsVO.getBrandName()+"]"+medicineOrderGoodsVO.getMedicineName()+" *"+medicineOrderGoodsVO.getMedicineNumber()+"\n");
+            }
+        }
+        return goodsInfo.toString();
+    }
 
 }

@@ -4,6 +4,7 @@ package com.hcx.asclepiusmanager.medicine.service;
 import com.hcx.asclepiusmanager.medicine.domain.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author huangcaixia
@@ -29,4 +30,6 @@ public interface MedicineService {
     Integer updateSoldStore(Medicine medicine);
 
     String findBrandNameByMedicineId(Integer medicineId);
+
+    Map<String, Integer> findCountInfo();
 }

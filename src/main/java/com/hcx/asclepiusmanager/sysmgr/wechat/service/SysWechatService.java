@@ -15,4 +15,6 @@ public interface SysWechatService {
     SysWechat updateUserInfo(SysWechat sysWechat);
 
     SysWechat getUserInfo();
+
+    int countUser();
 }

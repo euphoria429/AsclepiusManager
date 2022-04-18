@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author huangcaixia
@@ -126,5 +127,18 @@ public class MedicineController {
         return new Result(ResultEnum.ERROR.getCode(), ResultEnum.ERROR.getMsg(),"操作失败");
     }
 
+    /**
+     * 网页后端：统计用户、药品、订单
+     * @return
+     */
+    @GetMapping("/findCountInfo")
+    public Result findCountInfo(){
+        Result result=new Result();
+        result.setCode(ResultEnum.SUCCESS.getCode());
+        result.setMsg(ResultEnum.SUCCESS.getMsg());
+        Map<String, Integer> info=medicineService.findCountInfo();
+        result.setData(info);
+        return result;
+    }
 
 }

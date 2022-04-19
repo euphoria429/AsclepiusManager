@@ -1,6 +1,7 @@
 package com.hcx.asclepiusmanager.medicine.service.impl;
 
 import com.hcx.asclepiusmanager.common.utils.CustFileUtils;
+import com.hcx.asclepiusmanager.common.utils.IpUtils;
 import com.hcx.asclepiusmanager.medicine.domain.ImageResponse;
 import com.hcx.asclepiusmanager.medicine.domain.MedicineImg;
 import com.hcx.asclepiusmanager.medicine.mapper.MedicineImgMapper;
@@ -98,8 +99,7 @@ public class MedicineImgServiceImpl implements MedicineImgService {
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            // TODO 获取本地ip方式待改进！！
-            paths.add("http://10.168.1.184:8989/api/image/"+resource.getFilename());
+            paths.add("http://"+IpUtils.getHostIp()+":8989/api/image/"+resource.getFilename());
         }
         return paths;
     }

@@ -141,4 +141,18 @@ public class MedicineController {
         return result;
     }
 
+    /**
+     * 王爷后端：药品操作记录统计
+     * 只统计最近6天
+     * @return
+     */
+    @GetMapping("/findMedicineOutInRecord")
+    public Result findMedicineOutInRecord(){
+        Result result=new Result();
+        result.setCode(ResultEnum.SUCCESS.getCode());
+        result.setMsg(ResultEnum.SUCCESS.getMsg());
+        result.setData(medicineService.findMedicineOutInRecord());
+        return result;
+    }
+
 }

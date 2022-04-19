@@ -32,4 +32,6 @@ public interface MedicineService {
     String findBrandNameByMedicineId(Integer medicineId);
 
     Map<String, Integer> findCountInfo();
+
+    List<OutInDateVO> findMedicineOutInRecord();
 }

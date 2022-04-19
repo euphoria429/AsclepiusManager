@@ -16,9 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.hcx.asclepiusmanager.common.enums.SoldStatusEnum.ON_SOLD;
 
@@ -219,5 +217,35 @@ public class MedicineServiceImpl implements MedicineService {
         map.put("medicineNumber",medicineNumber);
         map.put("orderNumber",orderNumber);
         return map;
+    }
+
+    /**
+     * 最近六天的记录
+     * @return
+     */
+    @Override
+    public List<OutInDateVO> findMedicineOutInRecord() {
+        List<MedicineOutInVO> medicineOutInVOS=medicineMapper.findMedicineOutInRecord();
+        Map<String, List<MedicineOutInVO>> map = new LinkedHashMap<>();
+        for(MedicineOutInVO medicineOutInVO:medicineOutInVOS){
+            int code=medicineOutInVO.getOperationCode();
+            medicineOutInVO.setOperation(OperationEnum.findByCode(code).toString());
+            //key不存在
+            if(!map.containsKey(medicineOutInVO.getDays())){
+                List<MedicineOutInVO> m=new ArrayList<>();
+                m.add(medicineOutInVO);
+                map.put(medicineOutInVO.getDays(),m);
+            }else {
+                map.get(medicineOutInVO.getDays()).add(medicineOutInVO);
+            }
+        }
+        List<OutInDateVO> outInDateVOS=new ArrayList<>();
+        for (Map.Entry<String, List<MedicineOutInVO>> entry : map.entrySet()) {
+            OutInDateVO outInDateVO=new OutInDateVO();
+            outInDateVO.setDays(entry.getKey());
+            outInDateVO.setMedicineOutInVOS(entry.getValue());
+            outInDateVOS.add(outInDateVO);
+        }
+        return outInDateVOS;
     }
 }

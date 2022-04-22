@@ -15,4 +15,8 @@ public interface SysUserService {
     SysUser findByUsername(String username);
 
     String getCurrentOperator();
+
+    Integer addAdmin(String username);
+
+    Integer changePwd(String oldPwd, String newPwd);
 }
